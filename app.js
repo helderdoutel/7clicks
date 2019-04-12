@@ -1,13 +1,9 @@
 // server.js
+var servidor = require('./servidor');
+var controler = require('./controller');
 
-const express = require('express');
-const app = express();
-const path = require('path');
+servidor.config();
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
+controler.init(servidor.app, null);
 
-app.listen(process.env.PORT || 4000, function(){
-    console.log('Your node js server is running');
-});
+servidor.start_server(process.env.PORT || 4000);

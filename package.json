@@ -1,7 +1,7 @@
 {
   "name": "sevenclicks",
   "version": "0.3.0",
-  "description": "",
+  "description": "Mudar o mundo, ainda que levem pouco mais de sete cliques.",
   "engines": {
     "node": "10.x"
   },
@@ -15,10 +15,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/helderdoutel/7clicks"
+    "url": "git+https://github.com/helderdoutel/7clicks.git"
   },
   "keywords": [
     "sevenclicks"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/helderdoutel/7clicks/issues"
+  },
+  "homepage": "https://github.com/helderdoutel/7clicks#readme",
+  "devDependencies": {},
+  "author": ""
 }
