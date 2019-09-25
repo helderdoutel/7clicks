@@ -3,7 +3,10 @@ let contador = 0
 let wikipedia = null;
 let links = null;
 let novoLink = null;
-
+window.onload = function() {
+    var element =document.getElementById("overlay");
+    element.parentNode.removeChild(element);
+};
 const atualiza_page = () => {
     wikipedia = document.querySelector('#wikipedia');
     links = wikipedia.querySelectorAll('a');
