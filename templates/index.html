@@ -15,52 +15,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>7 Clicks</title>
-    <style>
-    .navbar > ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-    }
-
-    .navbar > li {
-        float: left;
-    }
-
-    .navbar > li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-    }
-
-    .navbar > li a:hover:not(.active){
-        background-color: #111;
-    }
-
-    .navbar > .active {
-        background-color: rgb(83, 76, 175);
-    }
-    .overlay {
-        background-color: black;
-        bottom: 0;
-        left: 0;
-        position: fixed;
-        right: 0;
-        top: 0;
-    }
-    </style>
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
 </head>
 <body style="background-color: #430475;">
-    <div class="overlay" id="overlay"></div>
+    <div class="overlay" id="overlay">
+        <h1 title="title">Carregando...</h1>
+    </div>
     <!--<div class="navbar">
         <ul>
             <li class="contador">0</li>
         </ul>
     </div> -->
+
 
     <div class='header'>
         <div id="initial_menu">
@@ -74,6 +40,12 @@
         <div id="contador_container">
             <h1 class='title'>Cliques: <span class="contador"></span></h1>
             <h1 class='title'>Destino: <span id="destino"></span></h1>
+        </div>
+        
+        <div class="popup" id="popup">
+            <div>
+                <h1 id="message"></h1>
+            </div>
         </div>
     </div>
     

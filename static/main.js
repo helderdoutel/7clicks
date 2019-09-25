@@ -72,10 +72,23 @@ const comeca_jogo = () => {
 
 const acaba_jogo = () => {
     if(contador <= 7){
-        alert("voce venceu");
+        popupShow("PARABÉNS! <br><br> Você venceu com apenas "+ contador +" cliques!<br><input class='big spacing' type='submit' value='Ver a página' onClick='popupHide()'>");
     } else {
-        alert("voce perdeu");
+        popupShow("Quase! <br><br> Você chegou com "+ contador +" cliques.<br> Mas tente de novo: água mole em pedra dura, tanto bate até que alcança <br><input class='big spacing' type='submit' value='Ver a página' onClick='popupHide()'>");
     }
+}
+
+const popupShow = (message) => {
+    let popup = document.getElementById("popup");
+    popup.style['display'] = 'block'; 
+
+    let tex = document.getElementById("message");
+    tex.innerHTML = message;
+}
+
+const popupHide = (message) => {
+    let popup = document.getElementById("popup");
+    popup.style['display'] = 'none'; 
 }
 
 const atualiza_UI = () => {
@@ -101,3 +114,4 @@ const atualiza_UI = () => {
 }
 
 // atualiza_page();
+popupShow("Mudar o mundo, nem que seja em pouco mais de sete cliques.<br><input class='big spacing' type='submit' value='Me Surpreenda!' onClick='comecar_jogo()'>");

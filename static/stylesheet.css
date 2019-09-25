@@ -26,9 +26,54 @@ input[type=submit]{
     cursor: pointer;
 }
 
+input[type=submit].big{
+    font-size: 21px;
+}
+
 input[type=submit]:hover{
     background-color: #ff9023;
     color:#fff;
+}
+
+.spacing{
+    margin: 20px; 
+}
+
+.navbar > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+.navbar > li {
+    float: left;
+}
+
+.navbar > li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar > li a:hover:not(.active){
+    background-color: #111;
+}
+
+.navbar > .active {
+    background-color: rgb(67, 4, 117);
+}
+
+.overlay {
+    background-color: rgb(67, 4, 117);
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
 }
 
 .header *{
@@ -68,6 +113,19 @@ input[type=submit]:hover{
 
 .header>div{
     margin: 0 auto;
+}
+
+.popup{
+    max-width: 80%;
+    margin: 0 auto;
+    position: fixed;
+    top: 200px;
+    bottom: 15%;
+    right: 0;
+    left: 0;
+    max-height: calc(85% - 200px);
+    color: #fff;
+    padding: 10% 40px;
 }
 
 .page>.start{
