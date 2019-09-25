@@ -31,8 +31,10 @@ const atualiza_page = () => {
             novoLink = link.getAttribute('href').replace('https://pt.wikipedia.org/', '/');
             xhttp.onreadystatechange = function() {
                 // Ao carregar substitui o div wikipedia
-                wikipedia.innerHTML = this.responseText;
+                r = JSON.parse(this.responseText);
+                wikipedia.innerHTML = r.text;
                 atualiza_page();
+                if(r.atingiu_destino === 1) acaba_jogo();
             }
             xhttp.open('GET', novoLink);
             xhttp.send();
@@ -56,6 +58,7 @@ const comeca_jogo = () => {
         wikipedia.innerHTML = r.text;
         document.getElementById('pagina_destino').value = r.destino;
         document.getElementById('destino').innerHTML = r.destino;
+        document.getElementById('pagina_inicio').value = r.inicio;
         atualiza_page();
     }
     xhttp.open('POST', '/start');
@@ -63,13 +66,10 @@ const comeca_jogo = () => {
     form_data.append("page_start", pagina_inicio.value);
     form_data.append("page_end", pagina_destino.value);
     xhttp.send(form_data);
-
-    // window.localStorage.setItem("pagina_inicio", pagina_inicio.value);
-    // window.localStorage.setItem("pagina_destino", pagina_destino.value);
 }
 
 const acaba_jogo = () => {
-    console.log("você venceu");
+    alert("voce venceu");
 }
 
 const atualiza_UI = () => {
