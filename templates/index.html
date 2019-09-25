@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>7 Clicks</title>
+    <link rel="stylesheet" href="/static/stylesheet.css">
     <style>
     .navbar > ul {
         list-style-type: none;
-
         margin: 0;
         padding: 0;
         overflow: hidden;
@@ -51,10 +51,20 @@
             <li class="contador">0</li>
         </ul>
     </div>
-    <br>
+
+    <div class='header'>
+        <h1 class='title'>Sete cliques para as estrelas!</h1>
+        <div>
+            <input type='text' id='pagina_inicio' placeholder='pagina inicial' name='inicio'>
+            <input type='text' id='pagina_destino' placeholder='pagina destino' name='destino'>
+            <input type='submit' value='Come&ccedil;ar' onClick='comecar_jogo()'>
+        </div>
+    </div>
+    
     <div id="wikipedia">
         {{ text|safe }}
     </div>
+    <!-- <div class='start'><input type='submit' value='Me surpreenda!' onClick='comecar_jogo()'></div> -->
 
 <script src="{{ url_for('static', filename='main.js') }}" type="text/javascript"></script>
 </body>
