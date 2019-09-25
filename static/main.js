@@ -69,7 +69,11 @@ const comeca_jogo = () => {
 }
 
 const acaba_jogo = () => {
-    alert("voce venceu");
+    if(contador <== 7){
+        alert("voce venceu");
+    } else {
+        alert("voce venceu, mais ou menos.");
+    }
 }
 
 const atualiza_UI = () => {
