@@ -60,6 +60,7 @@ const comeca_jogo = () => {
         document.getElementById('pagina_destino').value = r.destino;
         document.getElementById('destino').innerHTML = r.destino;
         document.getElementById('pagina_inicio').value = r.inicio;
+        document.getElementsByTagName('body')[0].style.backgroundColor = '#ffffff';
         atualiza_page();
     }
     xhttp.open('POST', '/start');
