@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>7 Clicks</title>
+    <style>
+    .navbar > ul {
+        list-style-type: none;
+
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    .navbar > li {
+        float: left;
+    }
+
+    .navbar > li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    .navbar > li a:hover:not(.active){
+        background-color: #111;
+    }
+
+    .navbar > .active {
+        background-color: rgb(83, 76, 175);
+    }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li class="contador">0</li>
+        </ul>
+    </div>
+    <br>
+    <div id="wikipedia">
+        {{ text|safe }}
+    </div>
+
+<script src="{{ url_for('static', filename='main.js') }}" type="text/javascript"></script>
+</body>
+</html>
