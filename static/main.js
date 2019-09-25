@@ -11,7 +11,7 @@ const atualiza_page = () => {
     links.forEach((link) => {
         if (link.hasAttribute('href') && link.getAttribute('href')[0] === '#') {
             // se for um link referencial nao coloca o event listener
-            continue
+            return;
         }
         link.addEventListener('click', (e) => {
             e.preventDefault();
