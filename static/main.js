@@ -29,7 +29,7 @@ const atualiza_page = () => {
             contadorElement.innerHTML = contador;
             const xhttp = new XMLHttpRequest();
             novoLink = link.getAttribute('href').replace('https://pt.wikipedia.org/', '/');
-            xhttp.onreadystatechange = function() {
+            xhttp.onload = function() {
                 // Ao carregar substitui o div wikipedia
                 r = JSON.parse(this.responseText);
                 wikipedia.innerHTML = r.text;
@@ -52,7 +52,7 @@ const comeca_jogo = () => {
     let pagina_destino = document.getElementById('pagina_destino');
 
     const xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function() {
+    xhttp.onload = function() {
         // Ao carregar substitui o div wikipedia
         r = JSON.parse(this.responseText);
         wikipedia.innerHTML = r.text;
@@ -69,10 +69,10 @@ const comeca_jogo = () => {
 }
 
 const acaba_jogo = () => {
-    if(contador <== 7){
+    if(contador <= 7){
         alert("voce venceu");
     } else {
-        alert("voce venceu, mais ou menos.");
+        alert("voce perdeu");
     }
 }
 
