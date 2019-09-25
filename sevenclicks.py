@@ -12,11 +12,13 @@ app.secret_key = str(os.urandom(32))
 
 @app.route("/")
 def home():
+    """Pagina inicial do site."""
     return render_template('index.html')
 
 
 @app.route("/start", methods=["POST"])
 def iniciar():
+    """Funcao para iniciar o jogo."""
     page_start = request.form.get(
         'page_start', 'https://pt.wikipedia.org/wiki/Especial:Aleat%C3%B3ria')
 
@@ -47,6 +49,7 @@ def iniciar():
 
 @app.route('/wiki/<page>')
 def pagina_wiki(page):
+    """Busca a pagina do wikipedia do link clicado."""
     url = request.args.get(
         'url', 'https://pt.wikipedia.org/wiki/' + page)
     if re.match(r'http(s)+://\w\w.wikipedia.org/(\S+|)+', url):
