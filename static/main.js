@@ -49,8 +49,23 @@ const comeca_jogo = () => {
     let pagina_inicio = document.getElementById('pagina_inicio');
     let pagina_destino = document.getElementById('pagina_destino');
 
-    window.localStorage.setItem("pagina_inicio", pagina_inicio.value);
-    window.localStorage.setItem("pagina_destino", pagina_destino.value);
+    const xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        // Ao carregar substitui o div wikipedia
+        r = JSON.parse(this.responseText);
+        wikipedia.innerHTML = r.text;
+        document.getElementById('pagina_destino').value = r.destino;
+        document.getElementById('destino').innerHTML = r.destino;
+        atualiza_page();
+    }
+    xhttp.open('POST', '/start');
+    form_data = new FormData();
+    form_data.append("page_start", pagina_inicio.value);
+    form_data.append("page_end", pagina_destino.value);
+    xhttp.send(form_data);
+
+    // window.localStorage.setItem("pagina_inicio", pagina_inicio.value);
+    // window.localStorage.setItem("pagina_destino", pagina_destino.value);
 }
 
 const acaba_jogo = () => {
@@ -79,4 +94,4 @@ const atualiza_UI = () => {
     }
 }
 
-atualiza_page();
+// atualiza_page();
