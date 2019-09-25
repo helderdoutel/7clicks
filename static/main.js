@@ -41,6 +41,7 @@ const atualiza_page = () => {
 
         });
     });
+    window.scrollTo(0, 0);
 }
 
 const comeca_jogo = () => {
