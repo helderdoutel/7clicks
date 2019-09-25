@@ -28,7 +28,6 @@ def pagina_wiki(page):
         r = r.text.replace('href="/', 'href="https://pt.wikipedia.org/')
     return r
 
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
