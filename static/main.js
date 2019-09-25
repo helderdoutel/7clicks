@@ -3,10 +3,13 @@ let contador = 0
 let wikipedia = null;
 let links = null;
 let novoLink = null;
+let gameOn = false;
+
 window.onload = function() {
     var element =document.getElementById("overlay");
     element.parentNode.removeChild(element);
 };
+
 const atualiza_page = () => {
     wikipedia = document.querySelector('#wikipedia');
     links = wikipedia.querySelectorAll('a');
@@ -18,6 +21,9 @@ const atualiza_page = () => {
         }
         link.addEventListener('click', (e) => {
             e.preventDefault();
+
+            if(!gameOn) comeca_jogo();
+
             // Incremeta o contador e carrega nova pagina
             contador++;
             contadorElement.innerHTML = contador;
@@ -30,10 +36,47 @@ const atualiza_page = () => {
             }
             xhttp.open('GET', novoLink);
             xhttp.send();
-            console.log(novoLink);
-            console.log(link)
+
         });
     });
+}
+
+const comeca_jogo = () => {
+    if(gameOn) return;
+    atualiza_UI();
+    gameOn = true;
+
+    let pagina_inicio = document.getElementById('pagina_inicio');
+    let pagina_destino = document.getElementById('pagina_destino');
+
+    window.localStorage.setItem("pagina_inicio", pagina_inicio.value);
+    window.localStorage.setItem("pagina_destino", pagina_destino.value);
+}
+
+const acaba_jogo = () => {
+    console.log("você venceu");
+}
+
+const atualiza_UI = () => {
+    if(!gameOn){
+        let menu = document.getElementById("initial_menu");
+        menu.style['display'] = 'none';
+
+        let contador_container = document.getElementById("contador_container");
+        contador_container.style['display'] = 'block';
+
+        let header = document.querySelector('.header');
+        header.classList.add('inGame');
+
+        wikipedia = document.getElementById('wikipedia');
+        wikipedia.classList.add('inGame');
+
+        contadorElement.innerHTML = contador;
+
+        let pagina_destino = document.getElementById('pagina_destino');
+        let destino = document.getElementById('destino');
+        destino.innerHTML = pagina_destino.value;
+    }
 }
 
 atualiza_page();

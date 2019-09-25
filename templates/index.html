@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>7 Clicks</title>
-    <link rel="stylesheet" href="/static/stylesheet.css">
     <style>
     .navbar > ul {
         list-style-type: none;
@@ -43,25 +42,32 @@
         top: 0;
     }
     </style>
+    <link rel="stylesheet" href="/static/stylesheet.css">
 </head>
 <body>
     <div class="overlay" id="overlay"></div>
-    <div class="navbar">
+    <!--<div class="navbar">
         <ul>
             <li class="contador">0</li>
         </ul>
-    </div>
+    </div> -->
 
     <div class='header'>
-        <h1 class='title'>Sete cliques para as estrelas!</h1>
-        <div>
-            <input type='text' id='pagina_inicio' placeholder='pagina inicial' name='inicio'>
-            <input type='text' id='pagina_destino' placeholder='pagina destino' name='destino'>
-            <input type='submit' value='Come&ccedil;ar' onClick='comecar_jogo()'>
+        <div id="initial_menu">
+            <h1 class='title'>Sete cliques para as estrelas!</h1>
+            <div>
+                <input type='text' id='pagina_inicio' placeholder='P&aacute;gina inicial' name='inicio'>
+                <input type='text' id='pagina_destino' placeholder='P&aacute;gina destino' name='destino'>
+                <input type='submit' value='Come&ccedil;ar' onClick='comeca_jogo()'>
+            </div>
+        </div>
+        <div id="contador_container">
+            <h1 class='title'>Cliques: <span class="contador"></span></h1>
+            <h1 class='title'>Destino: <span id="destino"></span></h1>
         </div>
     </div>
     
-    <div id="wikipedia">
+    <div id="wikipedia" class="page">
         {{ text|safe }}
     </div>
     <!-- <div class='start'><input type='submit' value='Me surpreenda!' onClick='comecar_jogo()'></div> -->

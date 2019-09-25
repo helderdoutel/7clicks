@@ -43,12 +43,27 @@ input[type=submit]:hover{
     width: 100%;
     z-index: 9999;
     background-color: rgb(67, 4, 117);
+    transition: padding .3s ease-in-out;
 }
 
-.header>.title{
+.header.inGame{
+    padding-bottom: 10px;
+}
+
+.title{
     color: #fff;
     border: none;
     font-size: 36px;
+}
+
+#contador_container{
+    display: none;
+}
+
+#contador_container .title{
+    padding: 0px;
+    margin: 0px;
+    font-size: 24px;
 }
 
 .header>div{
@@ -70,4 +85,8 @@ input[type=submit]:hover{
 .page{
     position: relative;
     top: 142px;
+    transition: top .3s ease-in-out;
 }
+ .page.inGame{
+    top: 50px;
+ }
