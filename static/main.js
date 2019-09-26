@@ -46,6 +46,7 @@ const atualiza_page = () => {
 
 const comeca_jogo = () => {
     if(gameOn) return;
+    popupHide()
     atualiza_UI();
     gameOn = true;
 
@@ -119,8 +120,8 @@ const pegar_aleatorio = (id) => {
         let target = document.getElementById(id);
         // Pega o link da pagina e trata pra pegar so o nome
         pagina = JSON.parse(this.responseText).url
-        .replace('https://pt.wikipedia.org/wiki/', '')
-        .replace('_', ' ');
+        // .replace('https://pt.wikipedia.org/wiki/', '')
+        // .replace('_', ' ');
         target.value = pagina;
     }
     xhttp.open('GET', '/random');
@@ -131,4 +132,4 @@ const pegar_aleatorio = (id) => {
 //transition: background-color 5s ease-in;
 
 // atualiza_page();
-popupShow("Mudar o mundo, nem que seja em pouco mais de sete cliques.<br><input class='big spacing' type='submit' value='Me Surpreenda!' onClick='comecar_jogo()'>");
+popupShow("Mudar o mundo, nem que seja em pouco mais de sete cliques.<br><input class='big spacing' type='submit' value='Me Surpreenda!' onClick='comeca_jogo()'>");
