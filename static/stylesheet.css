@@ -115,6 +115,7 @@ input[type=submit]:hover{
     margin-left: -40px;
     position: relative;
     top: 4px;
+    cursor: pointer;
 }
 
 .popup{
