@@ -67,16 +67,7 @@ input[type=submit]:hover{
     background-color: rgb(67, 4, 117);
 }
 
-.overlay {
-    background-color: rgb(67, 4, 117);
-    bottom: 0;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
-}
-
-.header *{
+.header *, .overlay{
     font-family: Oswald, sans-serif;
 }
 
@@ -127,12 +118,52 @@ input[type=submit]:hover{
     margin: 0 auto;
     position: fixed;
     top: 200px;
-    bottom: 15%;
+    bottom: 30%;
     right: 0;
     left: 0;
-    max-height: calc(85% - 200px);
+    max-height: calc(70% - 200px);
     color: #fff;
-    padding: 10% 40px;
+    padding: 5% 40px;
+    background-color: rgb(67, 4, 117);
+}
+
+.popup h1 {
+    color: #fff;
+    border: none;
+}
+
+.overlay {
+    background-color: rgb(67, 4, 117);
+    color: #fff;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    opacity: 1;
+    transition: opacity .6s ease-in-out;
+    transition: margin .2s ease-in-out;
+    min-height: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 999;
+    margin-top: 0px;
+    padding: 20% 0px;
+}
+
+.overlay.invisible {
+    opacity: 0;
+    margin-top: -100%;
+}
+
+.overlay h1{
+    color: #fff;
+    border: none;
+    text-align: center;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
 }
 
 .page>.start{
@@ -152,6 +183,54 @@ input[type=submit]:hover{
     top: 142px;
     transition: top .3s ease-in-out;
 }
- .page.inGame{
+
+.page.inGame{
     top: 50px;
- }
+    min-height: 1581px;
+}
+
+.footer {
+    margin-top: 44px;
+    background-color: rgb(67, 4, 117);
+    width: 20%;
+    border-radius: 10px;
+    position: fixed;
+    bottom: -125px;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    transition: bottom .35s ease-in-out;
+    text-align: center;
+    padding: 5px;
+    padding-bottom: 20px;
+}
+
+.footer:hover{
+    bottom: -10px;
+}
+
+.footer p{
+    margin: 0px;
+}
+
+.footer p>a{
+    font-family: Oswald;
+    font-size: 18px; 
+    color: #fff;
+    width: 100%;
+    text-decoration: none;
+    color: #fff;
+}
+
+.footer p>a:hover{
+    color: #ff9023;
+}
+
+.footer .logo{
+    max-height: 18px;
+    opacity: .8;
+}
+
+.footer .logo:hover{
+    opacity: 1;
+}

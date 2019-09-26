@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
 </head>
 <body style="background-color: #430475;">
-    <div class="overlay" id="overlay">
+    <div class="overlay invisible popup" id="overlay">
         <h1 title="title">Carregando...</h1>
     </div>
     <!--<div class="navbar">
@@ -51,6 +51,17 @@
     
     <div id="wikipedia" class="page">
         {{ text|safe }}
+    </div>
+
+    <div class="footer">
+        <a href="https://github.com/helderdoutel/7clicks" title="Reposit&oacute;rio"><img class="logo" target="_blank" src="/static/git.svg"></a>
+
+        <div class="">
+            <p><a href="https://github.com/danielpontoal" title="Daniel">Daniel</a></p>
+            <p><a href="https://github.com/gabrielgisoldo" title="Gabriel">Gabriel</a></p>
+            <p><a href="https://github.com/helderdoutel" title="Helder">Helder</a></p>
+            <p><a href="https://github.com/ramenbroth" title="Lucas">Lucas</a></p>
+        </div>
     </div>
     <!-- <div class='start'><input type='submit' value='Me surpreenda!' onClick='comecar_jogo()'></div> -->
 
