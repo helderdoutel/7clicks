@@ -117,10 +117,13 @@ const pegar_aleatorio = (id) => {
     const xhttp = new XMLHttpRequest();
     xhttp.onload = function() {
         let target = document.getElementById(id);
-        pagina = JSON.parse(this.responseText);
+        // Pega o link da pagina e trata pra pegar so o nome
+        pagina = JSON.parse(this.responseText).url
+        .replace('https://pt.wikipedia.org/wiki/', '')
+        .replace('_', ' ');
         target.value = pagina;
     }
-    xhttp.open('POST', '/random');
+    xhttp.open('GET', '/random');
     xhttp.send();
 }
 
