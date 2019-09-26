@@ -89,9 +89,9 @@ const comeca_jogo = (random) => {
 
 const acaba_jogo = () => {
     if(contador <= 7){
-        popupShow("PARABÉNS! <br><br> Você venceu com apenas "+ contador +" cliques!<br><input class='big spacing' type='submit' value='Ver a página' onClick='popupHide()'><input class='big spacing' type='button' value='Jogar Novamente' onClick='location.reload()'>");
+        popupShow("PARABÉNS! <br><br> Você venceu com apenas "+ contador +" cliques!<br><input class='big spacing' type='submit' value='Ver a página' onClick='popupHide()'><input class='big spacing' type='submit' value='Jogar Novamente' onClick='location.reload()'>");
     } else {
-        popupShow("Quase! <br><br> Você chegou com "+ contador +" cliques.<br> Mas tente de novo: " + get_proverb() + " <br><input class='big spacing' type='submit' value='Ver a página' onClick='popupHide()'><input class='big spacing' type='button' value='Jogar Novamente' onClick='location.reload()'>");
+        popupShow("Quase! <br><br> Você chegou com "+ contador +" cliques.<br> Mas tente de novo: " + get_proverb() + " <br><input class='big spacing' type='submit' value='Ver a página' onClick='popupHide()'><input class='big spacing' type='submit' value='Jogar Novamente' onClick='location.reload()'>");
     }
 }
 
