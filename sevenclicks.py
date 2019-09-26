@@ -46,6 +46,12 @@ def iniciar():
 
     return jsonify({"text": text, "destino": url_end, 'inicio': url_start})
 
+@app.route('/random')
+def pegar_aleatoria():
+    page = requests.get('https://pt.wikipedia.org/wiki/Especial:Aleat%C3%B3ria')
+    url = urllib.parse.unquote(page.url)
+    return jsonify({"url": url})
+
 
 @app.route('/wiki/<page>')
 def pagina_wiki(page):

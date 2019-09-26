@@ -16,7 +16,7 @@ input{
     padding: 5px 20px;
     border-radius: 2px;
     border: none;
-    margin: 5px;
+    margin: 10px;
 }
 
 input[type=submit]{
@@ -113,6 +113,13 @@ input[type=submit]:hover{
 
 .header>div{
     margin: 0 auto;
+}
+
+.random{
+    max-height: 20px;
+    margin-left: -40px;
+    position: relative;
+    top: 4px;
 }
 
 .popup{

@@ -113,5 +113,19 @@ const atualiza_UI = () => {
     }
 }
 
+const pegar_aleatorio = (id) => {
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
+        let target = document.getElementById(id);
+        pagina = JSON.parse(this.responseText);
+        target.value = pagina;
+    }
+    xhttp.open('POST', '/random');
+    xhttp.send();
+}
+
+//make baloons
+//transition: background-color 5s ease-in;
+
 // atualiza_page();
 popupShow("Mudar o mundo, nem que seja em pouco mais de sete cliques.<br><input class='big spacing' type='submit' value='Me Surpreenda!' onClick='comecar_jogo()'>");
