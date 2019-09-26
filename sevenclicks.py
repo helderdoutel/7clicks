@@ -6,7 +6,6 @@ import re
 import urllib
 
 app = Flask(__name__, template_folder='templates')
-
 app.secret_key = str(os.urandom(32))
 
 
@@ -49,7 +48,11 @@ def iniciar():
 
 @app.route('/random')
 def pegar_aleatoria():
+<<<<<<< Updated upstream
     """Retorna pagina aleatoria."""
+=======
+    """Busca link da pagina aleatoria."""
+>>>>>>> Stashed changes
     page = requests.get(
         'https://pt.wikipedia.org/wiki/Especial:Aleat%C3%B3ria')
     url = urllib.parse.unquote(page.url)
