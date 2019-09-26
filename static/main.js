@@ -71,6 +71,7 @@ const comeca_jogo = (random) => {
             r = JSON.parse(this.responseText);
             wikipedia.innerHTML = r.text;
             document.getElementById('pagina_destino').value = r.destino;
+            document.getElementById('destino').href = r.destino;
             document.getElementById('destino').innerHTML = r.destino;
             document.getElementById('pagina_inicio').value = r.inicio;
             document.getElementsByTagName('body')[0].style.backgroundColor = '#ffffff';
@@ -143,8 +144,4 @@ const pegar_aleatorio = (id) => {
     xhttp.send();
 }
 
-//make baloons
-//transition: background-color 5s ease-in;
-
-// atualiza_page();
 popupShow("Mudar o mundo, nem que seja em pouco mais de sete cliques.<br><input class='big spacing' type='submit' value='Me Surpreenda!' onClick='comeca_jogo(true)'>");
