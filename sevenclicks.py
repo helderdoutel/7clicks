@@ -4,9 +4,13 @@ import requests
 from flask import Flask, render_template, request, session, jsonify
 import re
 import urllib
+from flask_talisman import Talisman
 
 app = Flask(__name__, template_folder='templates')
 app.secret_key = str(os.urandom(32))
+
+Talisman(app, content_security_policy_report_only=True,
+         content_security_policy_report_uri='')
 
 
 @app.route("/")
