@@ -35,6 +35,10 @@ input[type=submit]:hover{
     color:#fff;
 }
 
+.title>a{
+    color: #fff;
+}
+
 .spacing{
     margin: 20px; 
 }
@@ -195,7 +199,7 @@ input[type=submit]:hover{
     width: 20%;
     border-radius: 10px;
     position: fixed;
-    bottom: -125px;
+    bottom: -150px;
     right: 0;
     left: 0;
     margin: 0 auto;
