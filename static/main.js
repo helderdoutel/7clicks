@@ -91,7 +91,7 @@ const acaba_jogo = () => {
     if(contador <= 7){
         popupShow("PARABÉNS! <br><br> Você venceu com apenas "+ contador +" cliques!<br><input class='big spacing' type='submit' value='Ver a página' onClick='popupHide()'>");
     } else {
-        popupShow("Quase! <br><br> Você chegou com "+ contador +" cliques.<br> Mas tente de novo: água mole em pedra dura, tanto bate até que alcança <br><input class='big spacing' type='submit' value='Ver a página' onClick='popupHide()'>");
+        popupShow("Quase! <br><br> Você chegou com "+ contador +" cliques.<br> Mas tente de novo: " + get_proverb() + " <br><input class='big spacing' type='submit' value='Ver a página' onClick='popupHide()'>");
     }
 }
 
