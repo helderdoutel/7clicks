@@ -145,10 +145,9 @@ const pegar_aleatorio = (id) => {
     xhttp.send(form_data);
 }
 
-const play_vinheta = (random) => {
+const play_vinheta = () => {
     var vinheta = new Audio("/static/vinheta.mp3");
     vinheta.play();
-    comeca_jogo(random)
 }
 
 popupShow("Mudar o mundo, nem que seja em pouco mais de sete cliques.<br><input class='big spacing' type='submit' value='Me Surpreenda!' onClick='comeca_jogo(true)'>");
