@@ -122,7 +122,6 @@ input[type=submit]:hover{
     max-width: 80%;
     margin: 0 auto;
     position: fixed;
-    top: 200px;
     bottom: 30%;
     right: 0;
     left: 0;
@@ -238,4 +237,37 @@ input[type=submit]:hover{
 
 .footer .logo:hover{
     opacity: 1;
+}
+
+@media(max-width: 768px){
+    .popup{
+        max-width: 100%;
+        max-height: calc(80% - 50px);
+        bottom: 10%;
+        padding: 5% 20px;
+    }
+
+    .header input[type='submit']{
+        min-width: 50%;
+    }
+
+    .popup h1, .title{
+        font-size: 24px;
+    }
+
+    #contador_container .title{
+        font-size: 18px;
+    }
+
+    .overlay{
+        padding: 80% 0px;
+    }
+
+    .overlay.invisible{
+        margin-top: -200%;
+    }
+
+    .header-container.header-chrome{
+        display: none !important;
+    }
 }

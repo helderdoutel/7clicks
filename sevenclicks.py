@@ -35,12 +35,12 @@ def iniciar():
 
     page_end = request.form.get('page_end', url_def)
 
-    if not page_start or\
-            not re.match(r'http(s)+://\w\w.(|m.)wikipedia.org/(\S+|)+', page_start):
+    if not page_start or not re.match(
+            r'http(s)+://\w\w.(|m.)wikipedia.org/(\S+|)+', page_start):
         page_start = url_def
 
-    if not page_end or\
-            not re.match(r'http(s)+://\w\w.(|m.)wikipedia.org/(\S+|)+', page_end):
+    if not page_end or not re.match(
+            r'http(s)+://\w\w.(|m.)wikipedia.org/(\S+|)+', page_end):
         page_end = url_def
 
     page_start = requests.get(page_start)
@@ -74,7 +74,6 @@ def pegar_aleatoria():
 @app.route('/wiki/<page>')
 def pagina_wiki(page):
     """Busca a pagina do wikipedia do link clicado."""
-
     mobile = int(request.args.get('mobile', 0))
 
     if mobile:
