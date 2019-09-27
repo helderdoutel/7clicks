@@ -63,7 +63,7 @@ def iniciar():
     return jsonify({"text": text, "destino": url_end, 'inicio': url_start})
 
 
-@app.route('/random')
+@app.route('/random',  methods=["POST", "GET"])
 def pegar_aleatoria():
     """Retorna pagina aleatoria."""
     mobile = int(request.form.get('mobile', 0))
