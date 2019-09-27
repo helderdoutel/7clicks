@@ -21,12 +21,6 @@
     <div class="overlay invisible popup" id="overlay">
         <h1 title="title">Carregando...</h1>
     </div>
-    <!--<div class="navbar">
-        <ul>
-            <li class="contador">0</li>
-        </ul>
-    </div> -->
-
 
     <div class='header'>
         <div id="initial_menu">
@@ -50,7 +44,6 @@
     </div>
     
     <div id="wikipedia" class="page">
-        {{ text|safe }}
     </div>
 
     <div class="footer">
@@ -64,7 +57,6 @@
             <p><a href="https://github.com/dllsantos" target="_blank" title="Danillo">Danillo</a></p>
         </div>
     </div>
-    <!-- <div class='start'><input type='submit' value='Me surpreenda!' onClick='comecar_jogo()'></div> -->
 
 <script src="{{ url_for('static', filename='proverb-generator.js') }}" type="text/javascript"></script>
 <script src="{{ url_for('static', filename='main.js') }}" type="text/javascript"></script>
