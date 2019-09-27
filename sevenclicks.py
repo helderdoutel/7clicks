@@ -22,19 +22,26 @@ def home():
 @app.route("/start", methods=["POST"])
 def iniciar():
     """Funcao para iniciar o jogo."""
-    page_start = request.form.get(
-        'page_start', 'https://pt.wikipedia.org/wiki/Especial:Aleat%C3%B3ria')
+    mobile = int(request.form.get('mobile', 0))
 
-    page_end = request.form.get(
-        'page_end', 'https://pt.wikipedia.org/wiki/Especial:Aleat%C3%B3ria')
+    if mobile:
+        url_def = 'https://pt.m.wikipedia.org/wiki/Especial:Aleat%C3%B3ria'
+        text_sub = 'href="https://pt.m.wikipedia.org/'
+    else:
+        url_def = 'https://pt.wikipedia.org/wiki/Especial:Aleat%C3%B3ria'
+        text_sub = 'href="https://pt.wikipedia.org/'
+
+    page_start = request.form.get('page_start', url_def)
+
+    page_end = request.form.get('page_end', url_def)
 
     if not page_start or\
-            not re.match(r'http(s)+://\w\w.wikipedia.org/(\S+|)+', page_start):
-        page_start = 'https://pt.wikipedia.org/wiki/Especial:Aleat%C3%B3ria'
+            not re.match(r'http(s)+://\w\w.(|m.)wikipedia.org/(\S+|)+', page_start):
+        page_start = url_def
 
     if not page_end or\
-            not re.match(r'http(s)+://\w\w.wikipedia.org/(\S+|)+', page_end):
-        page_end = 'https://pt.wikipedia.org/wiki/Especial:Aleat%C3%B3ria'
+            not re.match(r'http(s)+://\w\w.(|m.)wikipedia.org/(\S+|)+', page_end):
+        page_end = url_def
 
     page_start = requests.get(page_start)
     url_start = urllib.parse.unquote(page_start.url)
@@ -44,17 +51,22 @@ def iniciar():
     session['url_end'] = url_end
 
     if page_start:
-        text = page_start.text.replace(
-            'href="/', 'href="https://pt.wikipedia.org/')
+        text = page_start.text.replace('href="/', text_sub)
 
     return jsonify({"text": text, "destino": url_end, 'inicio': url_start})
 
 
-@app.route('/random')
+@app.route('/random', methods=["POST"])
 def pegar_aleatoria():
     """Retorna pagina aleatoria."""
-    page = requests.get(
-        'https://pt.wikipedia.org/wiki/Especial:Aleat%C3%B3ria')
+    mobile = int(request.form.get('mobile', 0))
+
+    if mobile:
+        url_def = 'https://pt.m.wikipedia.org/wiki/Especial:Aleat%C3%B3ria'
+    else:
+        url_def = 'https://pt.wikipedia.org/wiki/Especial:Aleat%C3%B3ria'
+
+    page = requests.get(url_def)
     url = urllib.parse.unquote(page.url)
     return jsonify({"url": url})
 
@@ -62,12 +74,21 @@ def pegar_aleatoria():
 @app.route('/wiki/<page>')
 def pagina_wiki(page):
     """Busca a pagina do wikipedia do link clicado."""
-    url = request.args.get(
-        'url', 'https://pt.wikipedia.org/wiki/' + page)
-    if re.match(r'http(s)+://\w\w.wikipedia.org/(\S+|)+', url):
+
+    mobile = int(request.args.get('mobile', 0))
+
+    if mobile:
+        url_def = 'https://pt.m.wikipedia.org/wiki/'
+        text_sub = 'href="https://pt.m.wikipedia.org/'
+    else:
+        url_def = 'https://pt.wikipedia.org/wiki/'
+        text_sub = 'href="https://pt.wikipedia.org/'
+
+    url = request.args.get('url', url_def + page)
+    if re.match(r'http(s)+://\w\w.(|m.)wikipedia.org/(\S+|)+', url):
         r = requests.get(url)
     if r:
-        r = r.text.replace('href="/', 'href="https://pt.wikipedia.org/')
+        r = r.text.replace('href="/', text_sub)
 
     if url == session['url_end']:
         end = 1

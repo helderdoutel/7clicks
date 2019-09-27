@@ -7,11 +7,6 @@ let novoLink = null;
 let gameOn = false;
 let mobile = screen.width<768?1:0;
 
-// window.onload = function() {
-//     //element.parentNode.removeChild(overlay);
-//     overlay.classList.add('invisible');
-// };
-
 const atualiza_page = () => {
     wikipedia = document.querySelector('#wikipedia');
     links = wikipedia.querySelectorAll('a');
@@ -30,7 +25,11 @@ const atualiza_page = () => {
             contador++;
             contadorElement.innerHTML = contador;
             const xhttp = new XMLHttpRequest();
-            novoLink = link.getAttribute('href').replace('https://pt.wikipedia.org/', '/');
+            if(mobile){
+                novoLink = link.getAttribute('href').replace('https://pt.m.wikipedia.org/', '/') + '?mobile=1'
+            } else {
+                novoLink = link.getAttribute('href').replace('https://pt.wikipedia.org/', '/');
+            }
             xhttp.onreadystatechange = function() {
                 if(this.readyState == 4){
                     overlay.classList.add('invisible');
@@ -85,6 +84,7 @@ const comeca_jogo = (random) => {
     form_data = new FormData();
     form_data.append("page_start", pagina_inicio.value);
     form_data.append("page_end", pagina_destino.value);
+    form_data.append("mobile", mobile);
     xhttp.send(form_data);
 }
 
@@ -137,12 +137,12 @@ const pegar_aleatorio = (id) => {
         let target = document.getElementById(id);
         // Pega o link da pagina e trata pra pegar so o nome
         pagina = JSON.parse(this.responseText).url
-        // .replace('https://pt.wikipedia.org/wiki/', '')
-        // .replace('_', ' ');
         target.value = pagina;
     }
-    xhttp.open('GET', '/random');
-    xhttp.send();
+    xhttp.open('POST', '/random');
+    form_data = new FormData();
+    form_data.append("mobile", mobile);
+    xhttp.send(form_data);
 }
 
 popupShow("Mudar o mundo, nem que seja em pouco mais de sete cliques.<br><input class='big spacing' type='submit' value='Me Surpreenda!' onClick='comeca_jogo(true)'>");
