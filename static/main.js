@@ -30,11 +30,7 @@ const atualiza_page = () => {
             contador++;
             contadorElement.innerHTML = contador;
             const xhttp = new XMLHttpRequest();
-            if(!modile){
-                novoLink = link.getAttribute('href').replace('https://pt.wikipedia.org/', '/');
-            } else {
-                novoLink = link.getAttribute('href').replace('https://pt.m.wikipedia.org/', '/');
-            }
+            novoLink = link.getAttribute('href').replace('https://pt.wikipedia.org/', '/');
             xhttp.onreadystatechange = function() {
                 if(this.readyState == 4){
                     overlay.classList.add('invisible');
@@ -89,7 +85,6 @@ const comeca_jogo = (random) => {
     form_data = new FormData();
     form_data.append("page_start", pagina_inicio.value);
     form_data.append("page_end", pagina_destino.value);
-    form_data.append("mobile", mobile);
     xhttp.send(form_data);
 }
 
@@ -146,10 +141,8 @@ const pegar_aleatorio = (id) => {
         // .replace('_', ' ');
         target.value = pagina;
     }
-    xhttp.open('POST', '/random');
-    form_data = new FormData();
-    form_data.append("mobile", mobile);
-    xhttp.send(form_data);
+    xhttp.open('GET', '/random');
+    xhttp.send();
 }
 
 popupShow("Mudar o mundo, nem que seja em pouco mais de sete cliques.<br><input class='big spacing' type='submit' value='Me Surpreenda!' onClick='comeca_jogo(true)'>");
