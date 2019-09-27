@@ -133,16 +133,19 @@ const atualiza_UI = () => {
 
 const pegar_aleatorio = (id) => {
     const xhttp = new XMLHttpRequest();
+    const target = document.getElementById(id);
     xhttp.onload = function() {
-        let target = document.getElementById(id);
         // Pega o link da pagina e trata pra pegar so o nome
         pagina = JSON.parse(this.responseText).url
+        target.disabled = false;
         target.value = pagina;
     }
     xhttp.open('POST', '/random');
     form_data = new FormData();
     form_data.append("mobile", mobile);
     xhttp.send(form_data);
+    target.disabled = true;
+    target.value = 'Carregando...';
 }
 
 popupShow("Mudar o mundo, nem que seja em pouco mais de sete cliques.<br><input class='big spacing' type='submit' value='Me Surpreenda!' onClick='comeca_jogo(true)'>");
