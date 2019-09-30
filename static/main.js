@@ -36,7 +36,10 @@ const atualiza_page = () => {
                     r = JSON.parse(this.responseText);
                     wikipedia.innerHTML = r.text;
                     atualiza_page();
-                    if(r.atingiu_destino === 1) acaba_jogo();
+                    if(r.atingiu_destino === 1){
+                        historico = r.historico.join(' -> ')
+                        acaba_jogo(historico);
+                    }
                 }else{
                     overlay.classList.remove('invisible');    
                 }
@@ -88,9 +91,9 @@ const comeca_jogo = (random) => {
     xhttp.send(form_data);
 }
 
-const acaba_jogo = () => {
+const acaba_jogo = (historico) => {
     if(contador <= 7){
-        popupShow("PARABÉNS! <br><br> Você venceu com apenas "+ contador +" cliques!<br><div class='big spacing'><input class='big' type='submit' value='Ver a página' onClick='popupHide()'><input class='big' type='submit' value='Jogar Novamente' onClick='location.reload()'></div>");
+        popupShow("PARABÉNS! <br><br> Você venceu com apenas "+ contador +" cliques!<br>Você passou pelas paginas:<br>" + historico + "<br><div class='big spacing'><input class='big' type='submit' value='Ver a página' onClick='popupHide()'><input class='big' type='submit' value='Jogar Novamente' onClick='location.reload()'></div>");
     } else {
         popupShow("Quase! <br><br> Você chegou com "+ contador +" cliques.<br> Mas tente de novo: " + get_proverb() + " <br><div class='big spacing'><input class='big' type='submit' value='Ver a página' onClick='popupHide()'><input class='big' type='submit' value='Jogar Novamente' onClick='location.reload()'></div>");
     }
@@ -136,7 +139,7 @@ const pegar_aleatorio = (id) => {
     const target = document.getElementById(id);
     xhttp.onload = function() {
         // Pega o link da pagina e trata pra pegar so o nome
-        pagina = JSON.parse(this.responseText).url
+        pagina = JSON.parse(this.responseText).url;
         target.disabled = false;
         target.value = pagina;
     }

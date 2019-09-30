@@ -49,6 +49,8 @@ def iniciar():
 
     session['url_start'] = url_start
     session['url_end'] = url_end
+    # inicia o historico
+    session['historico']  = [url_start]
 
     if page_start:
         text = page_start.text.replace('href="/', text_sub)
@@ -94,7 +96,8 @@ def pagina_wiki(page):
     else:
         end = 0
 
-    return jsonify({"text": r, "atingiu_destino": end})
+    session['historico'] += [url]
+    return jsonify({"text": r, "atingiu_destino": end, "historico": session['historico']})
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
